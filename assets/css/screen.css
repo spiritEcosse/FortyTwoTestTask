@@ -1,1 +1,10 @@
- 
+.container {
+    width: 900px;
+    margin: 0 auto;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}

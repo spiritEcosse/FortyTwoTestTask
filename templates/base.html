@@ -1,22 +1,63 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}{% endblock title %}Site Name</title>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}42 Coffee Cups Test Assignment{% endblock title %}</title>
 
-        <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
 
-        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-        <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
+    <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
 
-        {% block extra_head %}{% endblock extra_head %}
+    {% block extra_head %}{% endblock extra_head %}
 
-    </head>
-    <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
-        {% block content %}{% endblock content %}
-    </body>
+</head>
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+{% block content %}
+    <div class="container">
+        <h1>{% block h1 %}42 Coffee Cups Test Assignment{% endblock h1 %}</h1>
+
+        {% if contacts.exists %}
+            <div class="contacts">
+                {% for contact in contacts %}
+                    <div class="left">
+                        <div>
+                            <span>Name: </span>{{ contact.name }}
+                        </div>
+                        <div>
+                            <span>Last name: </span>{{ contact.surname }}
+                        </div>
+                        <div>
+                            <span>Date of birth: </span>{{ contact.birthday }}
+                        </div>
+
+                        <div>
+                            <span>Bio: </span>{{ contact.bio }}
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div>
+                            <span>Email: </span>{{ contact.email }}
+                        </div>
+                        <div>
+                            <span>Jabber: </span>{{ contact.jabber_id }}
+                        </div>
+                        <div>
+                            <span>Skype: </span>{{ contact.skype_id }}
+                        </div>
+                        <div>
+                            <span>Other contacts: </span>{{ contact.contacts }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
+</body>
 </html>
